@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CustomControls")]
 [assembly: AssemblyDescription("Wrapped utilized-UI controls assembly.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TOPCON Corp.")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("CustomControls")]
-[assembly: AssemblyCopyright("Copyright ©  2019 TOPCON Corp., Hiroaki Sugimoto")]
+[assembly: AssemblyCopyright("Copyright ©  2019, Hiroaki Sugimoto")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // すべての値を指定するか、次を使用してビルド番号とリビジョン番号を既定に設定できます
 // 以下のように '*' を使用します:
-[assembly: AssemblyVersion("1.0.15.2")]
-[assembly: AssemblyFileVersion("1.0.15.2")]
+[assembly: AssemblyVersion("1.0.16.0")]
+[assembly: AssemblyFileVersion("1.0.16.0")]

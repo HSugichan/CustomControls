@@ -104,6 +104,7 @@
       <DependentUpon>AsmInfoViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="FolderBrowserDialog.cs" />
+    <Compile Include="InputBox.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="Form.cs">
       <SubType>Form</SubType>
