@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CustomControls
 {
-    internal partial class FmProgressDialog : Form
+    internal partial class FmProgressDialog : System.Windows.Forms.Form
     {
         /// <summary>
         /// 
@@ -67,7 +67,7 @@ namespace CustomControls
         /// </summary>
         /// <param name="processNameText"></param>
         /// <param name="processResult"></param>
-        public void DisplayProcessState(string processNameText, ProcessResult processResult)
+        public void DisplayProcessState(string processNameText, string processResult)
         {
             if (InvokeRequired)
             {
@@ -75,7 +75,7 @@ namespace CustomControls
                 return;
             }
             int focusIndex = _progressStates.FindIndex(x => x.Process == processNameText);
-            if (focusIndex>=0)
+            if (focusIndex >= 0)
             {
                 _progressStates[focusIndex].State = processResult;
             }
@@ -136,6 +136,6 @@ namespace CustomControls
     internal class ProcessState
     {
         public string Process { get; set; }
-        public ProcessResult State { get; set; }
+        public string State { get; set; }
     }
 }

@@ -21,14 +21,15 @@ namespace CustomControls
         ///  Constructor
         /// </summary>
         /// <param name="owner"></param>
-        public ProgressDialog(Form owner)
+        /// <param name="headerText">Dialog header</param>
+        public ProgressDialog(Form owner, string headerText=null)
         {
             _fmProgressDialog = new FmProgressDialog()
             {
                 StartPosition = FormStartPosition.Manual,
-                Location=owner.Location,
+                Location = owner.Location,
                 Owner = owner,
-                Text = owner.Text
+                Text = string.IsNullOrWhiteSpace(headerText) ? owner.Text : headerText
             };
         }
         /// <summary>
@@ -73,6 +74,13 @@ namespace CustomControls
         /// <param name="processNameText"></param>
         /// <param name="processResult"></param>
         public void DisplayProcessState(string processNameText, ProcessResult processResult)
+            => _fmProgressDialog.DisplayProcessState(processNameText, processResult.ToString());
+        /// <summary>
+        /// Update completed process
+        /// </summary>
+        /// <param name="processNameText"></param>
+        /// <param name="processResult"></param>
+        public void DisplayProcessState(string processNameText, string processResult)
             => _fmProgressDialog.DisplayProcessState(processNameText, processResult);
 
     }
