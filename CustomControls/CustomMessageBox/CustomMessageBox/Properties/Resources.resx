@@ -177,4 +177,7 @@
   <data name="TxtVersion" xml:space="preserve">
     <value>VERSION</value>
   </data>
+  <data name="MsgDefaultProcessMessage" xml:space="preserve">
+    <value>Still not proccessed.</value>
+  </data>
 </root>

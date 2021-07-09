@@ -66,7 +66,7 @@ namespace CustomControls
         /// </summary>
         /// <param name="nextProgressText"></param>
         /// <param name="incrementalPercentage"></param>
-        public void DisplayNextProcess(string nextProgressText, int incrementalPercentage)
+        public void DisplayNextProcess(string nextProgressText, double incrementalPercentage)
             => _fmProgressDialog.DisplayNextProcess(nextProgressText, incrementalPercentage);
         /// <summary>
         /// Update completed process

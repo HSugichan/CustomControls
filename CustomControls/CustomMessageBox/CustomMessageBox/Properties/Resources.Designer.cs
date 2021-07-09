@@ -61,6 +61,15 @@ namespace CustomControls.Properties {
         }
         
         /// <summary>
+        ///   Still not proccessed. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgDefaultProcessMessage {
+            get {
+                return ResourceManager.GetString("MsgDefaultProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   This feature is supported on the current platform. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MsgErrUnsupported {

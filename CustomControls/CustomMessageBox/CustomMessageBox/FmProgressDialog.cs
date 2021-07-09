@@ -20,25 +20,29 @@ namespace CustomControls
             InitializeComponent();
 
             _processStateBindingSource.DataSource = _progressStates;
+            Percentage = 0;
+            DisplayNextProcess(Properties.Resources.MsgDefaultProcessMessage, 0);
         }
         /// <summary>
         /// Progress value
         /// </summary>
-        public int Percentage
+        public double Percentage
         {
-            get => _barProgress.Value;
+            get => _percentage;
 
             private set
             {
                 if (value >= 100)
-                {
-                    _barProgress.Value = 99;
-                    return;
-                }
+                    _percentage = 99.9;
+                else if (value < 0)
+                    _percentage = 0;
+                else
+                    _percentage = value;
 
-                _barProgress.Value = value;
+                _barProgress.Value = (int)_percentage;
             }
         }
+        private double _percentage;
         /// <summary>
         /// 取り消しが要求されたかどうか
         /// </summary>
@@ -50,7 +54,7 @@ namespace CustomControls
         /// </summary>
         /// <param name="nextProgressText"></param>
         /// <param name="incrementalPercentage"></param>
-        public void DisplayNextProcess(string nextProgressText, int incrementalPercentage)
+        public void DisplayNextProcess(string nextProgressText, double incrementalPercentage)
         {
             if (InvokeRequired)
             {
@@ -60,7 +64,7 @@ namespace CustomControls
 
             _lblProgress.Text = nextProgressText;
             Percentage += incrementalPercentage;
-            _lblPercentage.Text = $"{Percentage}%";
+            _lblPercentage.Text = $"{Percentage:f1}%";
         }
         /// <summary>
         /// Update completed process
@@ -98,9 +102,6 @@ namespace CustomControls
 
         private void ProgressDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (e.CloseReason != CloseReason.UserClosing)
-            //    return;
-
             Visible = false;
             IsCancellationRequested = true;
             e.Cancel = true;

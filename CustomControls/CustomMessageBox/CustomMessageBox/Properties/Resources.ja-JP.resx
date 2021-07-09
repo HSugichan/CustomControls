@@ -177,4 +177,7 @@
   <data name="TxtVersion" xml:space="preserve">
     <value>バージョン情報</value>
   </data>
+  <data name="MsgDefaultProcessMessage" xml:space="preserve">
+    <value>まだ処理していません。</value>
+  </data>
 </root>
