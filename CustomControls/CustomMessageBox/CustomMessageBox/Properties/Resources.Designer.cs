@@ -61,6 +61,15 @@ namespace CustomControls.Properties {
         }
         
         /// <summary>
+        ///   Change log finename. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgChangeLogFile {
+            get {
+                return ResourceManager.GetString("MsgChangeLogFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Still not proccessed. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MsgDefaultProcessMessage {
@@ -192,6 +201,15 @@ namespace CustomControls.Properties {
         internal static string TxtInputPasscode {
             get {
                 return ResourceManager.GetString("TxtInputPasscode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   LOG に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TxtLog {
+            get {
+                return ResourceManager.GetString("TxtLog", resourceCulture);
             }
         }
         

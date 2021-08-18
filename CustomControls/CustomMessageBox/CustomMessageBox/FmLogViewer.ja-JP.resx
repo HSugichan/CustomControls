@@ -117,73 +117,87 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MsgErrUnsupported" xml:space="preserve">
-    <value>This feature is supported on the current platform.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="_btnSwitchFile.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
   </data>
-  <data name="MsgOk" xml:space="preserve">
-    <value>OK.</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="_btnSwitchFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 22</value>
   </data>
-  <data name="TxtBCancel" xml:space="preserve">
-    <value>CANCEL</value>
+  <data name="_btnSwitchFile.Text" xml:space="preserve">
+    <value>ファイル切り替え(&amp;F)...</value>
   </data>
-  <data name="TxtBClear" xml:space="preserve">
-    <value>Crear</value>
+  <data name="_btnOpenDirectory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 22</value>
   </data>
-  <data name="TxtBExit" xml:space="preserve">
-    <value>Exit(&amp;X)</value>
+  <data name="_btnOpenDirectory.Text" xml:space="preserve">
+    <value>ディレクトリを開く(&amp;O)</value>
   </data>
-  <data name="TxtBRefresh" xml:space="preserve">
-    <value>Refresh</value>
+  <data name="_btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 22</value>
   </data>
-  <data name="TxtBSave" xml:space="preserve">
-    <value>Save...</value>
+  <data name="_btnSave.Text" xml:space="preserve">
+    <value>保存(&amp;S)...</value>
   </data>
-  <data name="TxtBuildDate" xml:space="preserve">
-    <value>BUILD DATE</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 6</value>
   </data>
-  <data name="TxtBVersion" xml:space="preserve">
-    <value>Version...</value>
+  <data name="_btnExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 22</value>
   </data>
-  <data name="TxtDetailsCollapsedLabel" xml:space="preserve">
-    <value>Details</value>
+  <data name="_btnExit.Text" xml:space="preserve">
+    <value>閉じる(&amp;X)</value>
   </data>
-  <data name="TxtDetailsExpandedLabel" xml:space="preserve">
-    <value>Invisible details</value>
+  <data name="fileFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 19</value>
   </data>
-  <data name="TxtHeader" xml:space="preserve">
-    <value>Log</value>
+  <data name="fileFToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル(&amp;F)</value>
   </data>
-  <data name="TxtHUnlock" xml:space="preserve">
-    <value>Unlock administrator mode</value>
+  <data name="_btnRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
   </data>
-  <data name="TxtInputPasscode" xml:space="preserve">
-    <value>PLEASE input a passcode of administrator.</value>
+  <data name="_btnRefresh.Text" xml:space="preserve">
+    <value>更新</value>
   </data>
-  <data name="TxtMFile" xml:space="preserve">
-    <value>File(&amp;F)</value>
+  <data name="_btnTogleAutoRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
   </data>
-  <data name="TxtMHelp" xml:space="preserve">
-    <value>Help(&amp;H)</value>
+  <data name="_btnTogleAutoRefresh.Text" xml:space="preserve">
+    <value>自動更新</value>
   </data>
-  <data name="TxtMTool" xml:space="preserve">
-    <value>Tool(&amp;T)</value>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 6</value>
   </data>
-  <data name="TxtRemainingTime" xml:space="preserve">
-    <value>Remaining time</value>
+  <data name="_btnClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
   </data>
-  <data name="TxtSuccessUnlock" xml:space="preserve">
-    <value>Unlocked DEBUGGER MODE.</value>
+  <data name="_btnClear.Text" xml:space="preserve">
+    <value>消去</value>
   </data>
-  <data name="TxtVersion" xml:space="preserve">
-    <value>VERSION</value>
+  <data name="toolTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
   </data>
-  <data name="MsgDefaultProcessMessage" xml:space="preserve">
-    <value>Still not proccessed.</value>
+  <data name="toolTToolStripMenuItem.Text" xml:space="preserve">
+    <value>ツール(&amp;T)</value>
   </data>
-  <data name="MsgChangeLogFile" xml:space="preserve">
-    <value>Change log finename.</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 25</value>
   </data>
-  <data name="TxtLog" xml:space="preserve">
-    <value>LOG</value>
+  <data name="_tbxLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="_tbxLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 425</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>454, 450</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>記録</value>
   </data>
 </root>

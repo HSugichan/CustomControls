@@ -103,6 +103,12 @@
     <Compile Include="AsmInfoViewer.Designer.cs">
       <DependentUpon>AsmInfoViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmLogViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmLogViewer.designer.cs">
+      <DependentUpon>FmLogViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FolderBrowserDialog.cs" />
     <Compile Include="InputBox.cs" />
     <Compile Include="MessageBox.cs" />
@@ -136,6 +142,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AsmInfoViewer.resx">
       <DependentUpon>AsmInfoViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmLogViewer.ja-JP.resx">
+      <DependentUpon>FmLogViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmLogViewer.resx">
+      <DependentUpon>FmLogViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmProgressDialog.ja-JP.resx">
       <DependentUpon>FmProgressDialog.cs</DependentUpon>
