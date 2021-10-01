@@ -25,7 +25,7 @@ namespace CustomControls
                  /// </summary>
                  /// <param name="owner"></param>
                  /// <param name="headerText">Dialog header</param>
-        public ProgressDialog(Form owner, string headerText=null)
+        public ProgressDialog(FormCustom owner, string headerText=null)
         {
             _fmProgressDialog = new FmProgressDialog()
             {

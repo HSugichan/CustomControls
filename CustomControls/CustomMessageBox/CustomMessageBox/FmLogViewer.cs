@@ -11,7 +11,7 @@ using CustomControls.Properties;
 
 namespace CustomControls
 {
-    public partial class FmLogViewer : Form
+    public partial class FmLogViewer : FormCustom
     {
         /// <summary>
         /// Getter
@@ -61,6 +61,9 @@ namespace CustomControls
         /// <param name="text"></param>
         public void AppendText(string text)
         {
+            if (!Visible)
+                return;
+
             lock (_lockObj)
                 _stringBuilder.Append(text);
         }
@@ -70,11 +73,14 @@ namespace CustomControls
         /// <param name="point"></param>
         public void Show(System.Drawing.Point point)
         {
-            if (_logViewer.Visible)
+            if (Visible)
+            {
+                TopMost = true;
+                TopMost = false;
                 return;
-
-            _logViewer.Location = point;
-            _logViewer.Visible = true;
+            }
+            Location = point;
+            Visible = true;
 
         }
         /// <summary>
