@@ -46,7 +46,7 @@ namespace CustomControls
         /// <summary>
         /// 取り消しが要求されたかどうか
         /// </summary>
-        public bool IsCancellationRequested { get; private set; } = false;
+        public bool IsCancellationRequested { get; internal set; } = false;
 
         private readonly List<ProcessState> _progressStates = new List<ProcessState>();
         /// <summary>

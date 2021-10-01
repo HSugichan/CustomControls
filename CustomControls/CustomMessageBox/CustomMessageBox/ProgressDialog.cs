@@ -16,12 +16,15 @@ namespace CustomControls
         /// <summary>
         /// 取り消しが要求されたかどうか
         /// </summary>
-        public bool IsCancellationRequested => _fmProgressDialog?.IsCancellationRequested ?? true;
-        /// <summary>
-        ///  Constructor
-        /// </summary>
-        /// <param name="owner"></param>
-        /// <param name="headerText">Dialog header</param>
+        public bool IsCancellationRequested
+        {
+            get => _fmProgressDialog.IsCancellationRequested;
+            set => _fmProgressDialog.IsCancellationRequested = value;
+        }        /// <summary>
+                 ///  Constructor
+                 /// </summary>
+                 /// <param name="owner"></param>
+                 /// <param name="headerText">Dialog header</param>
         public ProgressDialog(Form owner, string headerText=null)
         {
             _fmProgressDialog = new FmProgressDialog()
