@@ -21,7 +21,7 @@ namespace CustomControls
         /// <param name="owner">オーナーウィンドゥ</param>
         /// <param name="text">メッセージテキスト</param>
         /// <param name="caption">タイトル</param>
-        /// <param name="button">ボタン</param>
+        /// <param name="buttons">ボタン</param>
         /// <param name="icon">アイコン</param>
         /// <param name="defaultButton">デフォルトボタン</param>
         /// <returns></returns>
@@ -30,11 +30,11 @@ namespace CustomControls
             string text,
             string caption,
             MessageBoxIcon icon = MessageBoxIcon.None,
-            MessageBoxButtons button = MessageBoxButtons.OK,
+            MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
         {
             var mbox = new MessageBox(owner);
-            return mbox.Show(text, caption, icon, button, defaultButton);
+            return mbox.Show(text, caption, icon, buttons, defaultButton);
         }
         /// <summary>
         /// メッセージボックスを表示する
@@ -42,30 +42,30 @@ namespace CustomControls
         /// <param name="owner"></param>
         /// <param name="text"></param>
         /// <param name="icon"></param>
-        /// <param name="button"></param>
+        /// <param name="buttons"></param>
         /// <param name="defaultButton"></param>
         /// <returns></returns>
         public static DialogResult Show(
             IWin32Window owner,
             string text,
             MessageBoxIcon icon = MessageBoxIcon.None,
-            MessageBoxButtons button = MessageBoxButtons.OK,
+            MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
-            => Show(owner, text, $"{_productName}({_productVersion})", icon, button, defaultButton);
+            => Show(owner, text, $"{_productName}({_productVersion})", icon, buttons, defaultButton);
         /// <summary>
         /// メッセージボックスを表示する
         /// </summary>
         /// <param name="text"></param>
         /// <param name="icon"></param>
-        /// <param name="button"></param>
+        /// <param name="buttons"></param>
         /// <param name="defaultButton"></param>
         /// <returns></returns>
         public static DialogResult Show(
             string text,
             MessageBoxIcon icon = MessageBoxIcon.None,
-            MessageBoxButtons button = MessageBoxButtons.OK,
+            MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
-            => Show(Owner, text, $"{_productName}({_productVersion})", icon, button, defaultButton);
+            => Show(Owner, text, $"{_productName}({_productVersion})", icon, buttons, defaultButton);
         /// <summary>
         /// dllの製品名
         /// </summary>
@@ -90,7 +90,7 @@ namespace CustomControls
         /// </summary>
         /// <param name="text"></param>
         /// <param name="caption"></param>
-        /// <param name="button"></param>
+        /// <param name="buttons"></param>
         /// <param name="icon"></param>
         /// <param name="defaultButton"></param>
         /// <returns></returns>
@@ -98,26 +98,26 @@ namespace CustomControls
             string text,
             string caption,
             MessageBoxIcon icon,
-            MessageBoxButtons button,
+            MessageBoxButtons buttons,
             MessageBoxDefaultButton defaultButton )
         {
            
             if (Owner == null)
-                return System.Windows.Forms.MessageBox.Show(text, caption, button, icon, defaultButton);
+                return System.Windows.Forms.MessageBox.Show(text, caption, buttons, icon, defaultButton);
             // フックを設定する。
             if(Owner is System.Windows.Forms.Form)
             {
                 if (((System.Windows.Forms.Form)Owner).InvokeRequired)
                 {
                     return (DialogResult)((System.Windows.Forms.Form)Owner).Invoke
-                        ((Func<DialogResult>)(() => Show(text, caption, icon, button, defaultButton)));                   
+                        ((Func<DialogResult>)(() => Show(text, caption, icon, buttons, defaultButton)));                   
                 }
             }
             IntPtr hInstance = WinAPI.GetWindowLong(Owner.Handle, WinAPI.GWL_HINSTANCE);
             IntPtr threadId = WinAPI.GetCurrentThreadId();
             m_hHook = WinAPI.SetWindowsHookEx(WinAPI.WH_CBT, new WinAPI.HOOKPROC(HookProc), hInstance, threadId);
 
-            return System.Windows.Forms.MessageBox.Show(Owner, text, caption, button, icon, defaultButton);
+            return System.Windows.Forms.MessageBox.Show(Owner, text, caption, buttons, icon, defaultButton);
         }
 
         /// <summary>

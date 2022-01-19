@@ -11,7 +11,10 @@ using CustomControls.Properties;
 
 namespace CustomControls
 {
-    public partial class FmLogViewer : FormCustom
+    /// <summary>
+    /// Log form
+    /// </summary>
+    public partial class FmLogViewer : Form
     {
         /// <summary>
         /// Getter
