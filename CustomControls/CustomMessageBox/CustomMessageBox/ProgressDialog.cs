@@ -56,6 +56,16 @@ namespace CustomControls
             _fmProgressDialog.Owner.Enabled = false;
         }
         /// <summary>
+        /// Show specified location.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public void Show(int x,int y)
+        {
+            _fmProgressDialog.Location = new System.Drawing.Point(x, y);
+            Show();
+        }
+        /// <summary>
         /// close
         /// </summary>
         public void Close()
