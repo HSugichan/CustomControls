@@ -20,13 +20,19 @@ namespace CustomControls
             InitializeComponent();
 
             _lblName.Text = assembly.GetName().Name;
+            AsmName = assembly.GetName().Name;
 
             _lblVersion.Text = $"{Resources.TxtVersion}: {assembly.GetName().Version}";
-            _lblBuildDate.Text = $"{Resources.TxtBuildDate}: {File.GetLastWriteTimeUtc(assembly.Location)} (UTC)";
+            AsmVersion = assembly.GetName().Version;
 
+            _lblBuildDate.Text = $"{Resources.TxtBuildDate}: {File.GetLastWriteTimeUtc(assembly.Location)} (UTC)";
+            BuildDateTimeUtc = File.GetLastWriteTimeUtc(assembly.Location);
 
             _pbxIcon.Image = GetIconFromPath(assembly.Location);
         }
+        public string AsmName { get; }
+        public System.Version AsmVersion { get; }
+        public DateTime BuildDateTimeUtc { get; }
         private Bitmap GetIconFromPath(string asmPath)
         {
             SHFILEINFO shinfo = new SHFILEINFO();

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Text;
 
 namespace CustomControls
 {
@@ -36,13 +37,20 @@ namespace CustomControls
                 {
                     var asmInfo = Assembly.LoadFile(asmFile);
                     var tabPage = new TabPage(System.IO.Path.GetFileName(asmFile));
-                    tabPage.Controls.Add(new AsmInfoControl(asmInfo));
+                    var asmControl = new AsmInfoControl(asmInfo);
+                    tabPage.Controls.Add(asmControl);
                     _tabAssembly.TabPages.Add(tabPage);
+
+                    _stringBuilder.AppendLine(new string('-', 20));
+                    _stringBuilder.AppendLine($"{asmControl.AsmName} ({asmControl.AsmVersion})");
+                    _stringBuilder.AppendLine($"built {asmControl.BuildDateTimeUtc} (UTC)");
+                    _stringBuilder.AppendLine(new string('-', 20));
                 }
                 catch { }
             }
 
         }
+        readonly private StringBuilder _stringBuilder = new StringBuilder();
         /// <summary>
         /// Display a dialog whitch shows informations of assembly passed by filepath.
         /// </summary>
@@ -64,6 +72,11 @@ namespace CustomControls
         private void AsmViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult = DialogResult.Abort;
+        }
+
+        private void _btnContextMenuCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(_stringBuilder.ToString());
         }
     }
 }
