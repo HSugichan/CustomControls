@@ -22,7 +22,7 @@ namespace CustomControls
         /// <summary>
         /// dllのバージョン
         /// </summary>
-        private static readonly Version _productVersion =ExeInfo.GetInstance().Version;
+        private static readonly Version _productVersion = ExeInfo.GetInstance().Version;
         private RichMessageBox(IWin32Window owner)
         {
             _owner = owner;
@@ -35,17 +35,19 @@ namespace CustomControls
         /// <param name="instructionText"></param>
         /// <param name="caption"></param>
         /// <param name="icon"></param>
-        /// <param name="button"></param>
+        /// <param name="buttons"></param>
         /// <param name="detailInfo"></param>
+        /// <param name="defaultButton"></param>
         /// <returns></returns>
         private DialogResult Show(
-            string text,
-            string instructionText,
-            string caption,
-            RichMessageBoxIcon icon = RichMessageBoxIcon.None,
-            RichMessageBoxButton button = RichMessageBoxButton.Ok,
-            string detailInfo = ""
-            )
+                    string text,
+                    string instructionText,
+                    string caption,
+                    RichMessageBoxIcon icon = RichMessageBoxIcon.None,
+                    RichMessageBoxButton buttons = RichMessageBoxButton.Ok,
+                    string detailInfo = "",
+                    RichMessageBoxDefaultButton defaultButton = RichMessageBoxDefaultButton.Button1
+                    )
         {
             if (!TaskDialog.IsPlatformSupported)//TaskDialogがサポート外
                 throw new Exception(Properties.Resources.MsgErrUnsupported);
@@ -56,10 +58,10 @@ namespace CustomControls
                 InstructionText = instructionText,
                 Text = text,
                 Icon = (TaskDialogStandardIcon)icon,
-                StandardButtons = (TaskDialogStandardButtons)button,
+                StandardButtons = (TaskDialogStandardButtons)buttons,
                 DetailsExpandedLabel = Properties.Resources.TxtDetailsExpandedLabel,
                 DetailsCollapsedLabel = Properties.Resources.TxtDetailsCollapsedLabel,
-                DetailsExpandedText= detailInfo,
+                DetailsExpandedText = detailInfo,
             })
             {
                 if (_owner != null)
@@ -70,14 +72,27 @@ namespace CustomControls
                 else
                     dialog.StartupLocation = TaskDialogStartupLocation.CenterScreen;
 
-                dialog.Cancelable = !(button == RichMessageBoxButton.YesNo || button == RichMessageBoxButton.Ok);//YesNo/OKのときはxボタンを無効
+                dialog.Cancelable = !(((TaskDialogStandardButtons)buttons & TaskDialogStandardButtons.Cancel) == TaskDialogStandardButtons.Cancel);//YesNo/OKのときはxボタンを無効
+
+                switch (defaultButton)
+                {
+                    case RichMessageBoxDefaultButton.Button2:
+                        if (((TaskDialogStandardButtons)buttons & TaskDialogStandardButtons.No) == TaskDialogStandardButtons.No)
+                            dialog.DefaultButton = TaskDialogDefaultButton.No;
+                        else if (((TaskDialogStandardButtons)buttons & TaskDialogStandardButtons.Cancel) == TaskDialogStandardButtons.Cancel)
+                            dialog.DefaultButton = TaskDialogDefaultButton.Cancel;
+
+                        break;
+                    case RichMessageBoxDefaultButton.Button3:
+                        if (buttons == RichMessageBoxButton.YesNoCancel)
+                            dialog.DefaultButton = TaskDialogDefaultButton.Cancel;
+
+                        break;
+                }
 
                 var dlg = dialog.Show();
                 switch (dlg)
                 {
-                    //case TaskDialogResult.None:
-                    //    return DialogResult.None;
-
                     case TaskDialogResult.Ok:
                         return DialogResult.OK;
                     case TaskDialogResult.Yes:
@@ -102,6 +117,7 @@ namespace CustomControls
         /// <param name="icon"></param>
         /// <param name="buttons"></param>
         /// <param name="detailInfo"></param>
+        /// <param name="defaultButton"></param>
         /// <returns></returns>
         public static DialogResult Show(
             IWin32Window owner,
@@ -110,10 +126,12 @@ namespace CustomControls
             string caption,
             RichMessageBoxIcon icon = RichMessageBoxIcon.None,
             RichMessageBoxButton buttons = RichMessageBoxButton.Ok,
-            string detailInfo = "")
+            string detailInfo = "",
+                    RichMessageBoxDefaultButton defaultButton = RichMessageBoxDefaultButton.Button1
+            )
         {
             var dlg = new RichMessageBox(owner);
-            return dlg.Show( text, instructionText, caption, icon, buttons,detailInfo);
+            return dlg.Show(text, instructionText, caption, icon, buttons, detailInfo, defaultButton);
         }
         /// <summary>
         /// Shows a rich Message box.
@@ -124,6 +142,7 @@ namespace CustomControls
         /// <param name="icon"></param>
         /// <param name="buttons"></param>
         /// <param name="detailInfo"></param>
+        /// <param name="defaultButton"></param>
         /// <returns></returns>
         public static DialogResult Show(
              IWin32Window owner,
@@ -131,8 +150,9 @@ namespace CustomControls
             string instructionText,
             RichMessageBoxIcon icon = RichMessageBoxIcon.None,
             RichMessageBoxButton buttons = RichMessageBoxButton.Ok,
-            string detailInfo = null)
-            => Show(owner, text, instructionText, $"{_productName}({_productVersion})", icon, buttons, detailInfo);
+            string detailInfo = "",
+             RichMessageBoxDefaultButton defaultButton = RichMessageBoxDefaultButton.Button1)
+            => Show(owner, text, instructionText, $"{_productName}({_productVersion})", icon, buttons, detailInfo, defaultButton);
     }
     /// <summary>
     /// Specifies the icon displayed in a dialog.
@@ -175,21 +195,39 @@ namespace CustomControls
         /// <summary>
         /// "Yes" and "No" buttons.
         /// </summary>
-        YesNo = TaskDialogStandardButtons.Yes| TaskDialogStandardButtons.No,
+        YesNo = TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No,
 
         /// <summary>
         /// "Yes", "No", and "Cancel" buttons.
         /// </summary>
-        YesNoCancel = TaskDialogStandardButtons.Yes| TaskDialogStandardButtons.No | TaskDialogStandardButtons.Cancel,
-      
+        YesNoCancel = TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No | TaskDialogStandardButtons.Cancel,
+
         /// <summary>
         /// "OK" and "Cancel" buttons.
         /// </summary>
         OkCancel = TaskDialogStandardButtons.Ok | TaskDialogStandardButtons.Cancel,
-   
+
         /// <summary>
         /// "Retry" and "Cancel" buttons.
         /// </summary>
         RetryCancel = TaskDialogStandardButtons.Retry | TaskDialogStandardButtons.Cancel,
+    }
+    /// <summary>
+    /// Specifies constants defining the default button on a CustomControls.RichMessageBox.
+    /// </summary>
+    public enum RichMessageBoxDefaultButton
+    {
+        /// <summary>
+        /// The first button on the message box is the default button.
+        /// </summary>
+        Button1 = MessageBoxDefaultButton.Button1,
+        /// <summary>
+        /// The second button on the message box is the default button.
+        /// </summary>
+        Button2 = MessageBoxDefaultButton.Button2,
+        /// <summary>
+        /// The third button on the message box is the default button.
+        /// </summary>
+        Button3 = MessageBoxDefaultButton.Button3
     }
 }
