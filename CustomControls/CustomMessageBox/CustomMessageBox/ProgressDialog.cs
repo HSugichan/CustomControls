@@ -10,7 +10,7 @@ namespace CustomControls
     /// <summary>
     /// Wrap FmProgressDialog class not to access Form property.
     /// </summary>
-    public class ProgressDialog : IDisposable 
+    public class ProgressDialog : IDisposable
     {
         private readonly FmProgressDialog _fmProgressDialog;
         /// <summary>
@@ -25,7 +25,7 @@ namespace CustomControls
                  /// </summary>
                  /// <param name="owner"></param>
                  /// <param name="headerText">Dialog header</param>
-        public ProgressDialog(Form owner, string headerText=null)
+        public ProgressDialog(Form owner, string headerText = null)
         {
             _fmProgressDialog = new FmProgressDialog()
             {
@@ -51,7 +51,7 @@ namespace CustomControls
         /// Show
         /// </summary>
         public void Show()
-        {            
+        {
             _fmProgressDialog.Show();
             _fmProgressDialog.Owner.Enabled = false;
         }
@@ -60,7 +60,7 @@ namespace CustomControls
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void Show(int x,int y)
+        public void Show(int x, int y)
         {
             _fmProgressDialog.Location = new System.Drawing.Point(x, y);
             Show();
@@ -95,6 +95,9 @@ namespace CustomControls
         /// <param name="processResult"></param>
         public void DisplayProcessState(string processNameText, string processResult)
             => _fmProgressDialog.DisplayProcessState(processNameText, processResult);
-
+        /// <summary>
+        /// Requested cancellation event handler.
+        /// </summary>
+        public event Action RequestedCancellation { add => _fmProgressDialog.RequestedCancellation += value; remove => _fmProgressDialog.RequestedCancellation -= value; }
     }
 }

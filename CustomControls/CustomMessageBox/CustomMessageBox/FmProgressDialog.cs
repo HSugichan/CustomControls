@@ -22,6 +22,8 @@ namespace CustomControls
             _processStateBindingSource.DataSource = _progressStates;
             Percentage = 0;
             DisplayNextProcess(Properties.Resources.MsgDefaultProcessMessage, 0);
+
+            RequestedCancellation += () => IsCancellationRequested = true;
         }
         /// <summary>
         /// Progress value
@@ -97,13 +99,16 @@ namespace CustomControls
         }
         private void _btnCancel_Click(object sender, EventArgs e)
         {
-            IsCancellationRequested = true;
+            RequestedCancellation();
         }
-
+        public event Action RequestedCancellation = null;
         private void ProgressDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (e.CloseReason != CloseReason.UserClosing)
+                return;
+
+            RequestedCancellation();
             Visible = false;
-            IsCancellationRequested = true;
             e.Cancel = true;
             return;
         }
