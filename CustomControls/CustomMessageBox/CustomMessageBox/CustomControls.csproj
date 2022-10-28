@@ -96,7 +96,6 @@
     </Compile>
     <Compile Include="CommandLinkDialog.cs" />
     <Compile Include="AsmInfo.cs" />
-    <Compile Include="EnumUtil.cs" />
     <Compile Include="AsmInfoViewer.cs">
       <SubType>Form</SubType>
     </Compile>

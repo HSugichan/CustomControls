@@ -87,7 +87,7 @@ namespace CustomControls
         /// <summary>
         /// Available language list
         /// </summary>
-        public static  LanguageRegion[] LanguageRegions => EnumUtil<LanguageRegion>.Array();
+        public static LanguageRegion[] LanguageRegions => (LanguageRegion[])Enum.GetValues(typeof(LanguageRegion));
     }
 
     /// <summary>
@@ -96,13 +96,17 @@ namespace CustomControls
     public enum LanguageRegion : int
     {
         /// <summary>
-        /// 英語、デフォルト値
+        /// English(default)
         /// </summary>
         English = 0,
         /// <summary>
         /// 日本語
         /// </summary>
         Japanese = 1,
+        /// <summary>
+        /// 簡体字
+        /// </summary>
+        SimplifiedChinese = 2,
     }
     /// <summary>
     /// LanguageRegion  に対する拡張メソッドの定義
