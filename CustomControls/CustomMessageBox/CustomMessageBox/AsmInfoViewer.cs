@@ -9,7 +9,7 @@ namespace CustomControls
     /// <summary>
     /// Show the informations of assemblies on UI.
     /// </summary>
-    public partial class AsmInfoViewer : FormCustom
+    public partial class AsmInfoViewer : Form
     {
         /// <summary>
         /// EXE情報はデフォルトで追加済み

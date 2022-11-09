@@ -50,7 +50,7 @@ namespace CustomControls
                     )
         {
             if (!TaskDialog.IsPlatformSupported)//TaskDialogがサポート外
-                throw new Exception(Properties.Resources.MsgErrUnsupported);
+                throw new Exception($"{Properties.Resources.MsgErrUnsupported} ({nameof(TaskDialog)})");
 
             using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.TaskDialog()
             {
@@ -182,8 +182,7 @@ namespace CustomControls
     }
 
     /// <summary>
-    /// Identifies one of the standard buttons that can be displayed via RichMessageBox.
-    /// 
+    /// Identifies one of the standard buttons that can be displayed on RichMessageBox.
     /// </summary>
     public enum RichMessageBoxButton
     {
@@ -213,7 +212,7 @@ namespace CustomControls
         RetryCancel = TaskDialogStandardButtons.Retry | TaskDialogStandardButtons.Cancel,
     }
     /// <summary>
-    /// Specifies constants defining the default button on a CustomControls.RichMessageBox.
+    /// Specifies constants defining the default button on RichMessageBox.
     /// </summary>
     public enum RichMessageBoxDefaultButton
     {

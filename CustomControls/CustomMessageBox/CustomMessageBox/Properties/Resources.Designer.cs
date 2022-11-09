@@ -79,7 +79,7 @@ namespace CustomControls.Properties {
         }
         
         /// <summary>
-        ///   This feature is supported on the current platform. に類似しているローカライズされた文字列を検索します。
+        ///   This feature is unsupported on the current platform. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MsgErrUnsupported {
             get {

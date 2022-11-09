@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MsgErrUnsupported" xml:space="preserve">
-    <value>This feature is supported on the current platform.</value>
+    <value>This feature is unsupported on the current platform.</value>
   </data>
   <data name="MsgOk" xml:space="preserve">
     <value>OK.</value>

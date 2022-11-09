@@ -50,7 +50,7 @@ namespace CustomControls
         /// </summary>
         public bool IsCancellationRequested { get; internal set; } = false;
 
-        private readonly List<ProcessState> _progressStates = new List<ProcessState>();
+        private readonly List<ProcessState> _progressStates = new List<ProcessState>(1 << 10);
         /// <summary>
         /// Update progressbar
         /// </summary>
@@ -87,6 +87,9 @@ namespace CustomControls
             }
             else
             {
+                if (_progressStates.Count == _progressStates.Capacity)
+                    _progressStates.RemoveAt(0);
+
                 _progressStates.Add(new ProcessState { Process = processNameText, State = processResult });
                 focusIndex = _progressStates.Count() - 1;
             }
