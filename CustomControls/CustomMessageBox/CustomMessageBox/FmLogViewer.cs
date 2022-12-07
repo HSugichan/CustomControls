@@ -195,7 +195,11 @@ namespace CustomControls
                 ChangedLogFile?.Invoke(sfd.FileName);
             }
         }
-        private void SetLogFilename(string log)
+        /// <summary>
+        /// Set log filename.
+        /// </summary>
+        /// <param name="log"></param>
+        public void SetLogFilename(string log)
         {
             if (InvokeRequired)
             {
