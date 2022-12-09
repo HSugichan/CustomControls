@@ -102,6 +102,7 @@
     <Compile Include="AsmInfoViewer.Designer.cs">
       <DependentUpon>AsmInfoViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogParamConversion.cs" />
     <Compile Include="FmLogViewer.cs">
       <SubType>Form</SubType>
     </Compile>

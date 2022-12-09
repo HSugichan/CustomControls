@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace CustomControls
 {
     /// <summary>
-    /// Command link dialog
+    /// Command link dialog to notify warning.
     /// http://grabacr.net/archives/288
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
@@ -27,7 +27,9 @@ namespace CustomControls
 
         private TResult Show(string text,
             string instructionText,
-            string caption, CommandLinkButton[] commandLinkTables)
+            string caption,
+            CommandLinkIcon icon,
+            CommandLinkButton[] commandLinkTables)
         {
             TResult dialogResult = default;
 
@@ -37,13 +39,12 @@ namespace CustomControls
                 Caption = caption,
                 InstructionText = instructionText,
                 Text = text,
+                Icon = TaskDialogStandardIcon.Warning
             })
             {
-                if (_owner == null ||
-                    commandLinkTables == null ||
-                    commandLinkTables.Length < 1)
+                if (commandLinkTables.Length < 1)
                 {
-                    throw new NullReferenceException();
+                    throw new ArgumentOutOfRangeException();
                 }
                 else
                 {
@@ -76,20 +77,21 @@ namespace CustomControls
             return dialogResult;
         }
         /// <summary>
-        /// 
+        /// Show custum dialog.
         /// </summary>
         /// <param name="owner"></param>
         /// <param name="text"></param>
         /// <param name="instructionText"></param>
         /// <param name="caption"></param>
+        /// <param name="icon"></param>
         /// <param name="commandLinkTables"></param>
         /// <returns></returns>
         public static TResult Show(IWin32Window owner, string text,
-            string instructionText,
-            string caption, CommandLinkButton[] commandLinkTables)
+                    string instructionText,
+                    string caption, CommandLinkIcon icon, CommandLinkButton[] commandLinkTables)
         {
             var commandLinkDialog = new CommandLinkDialog<TResult>(owner);
-            return commandLinkDialog.Show(text, instructionText, caption, commandLinkTables);
+            return commandLinkDialog.Show(text, instructionText, caption, icon, commandLinkTables);
         }
 
         /// <summary>
@@ -103,7 +105,7 @@ namespace CustomControls
             /// <param name="textOverview">Button text</param>
             /// <param name="result">Dialog result</param>
             /// <param name="isDefault">Default or not</param>
-            public CommandLinkButton(string textOverview, TResult result,bool isDefault=false)
+            public CommandLinkButton(string textOverview, TResult result, bool isDefault = false)
             {
                 TextOverview = textOverview;
                 Result = result;
@@ -146,4 +148,31 @@ namespace CustomControls
             public bool IsDefault { get; }
         }
     }
+    /// <summary>
+    /// Specifies the icon displayed in a dialog.
+    /// </summary>
+    public enum CommandLinkIcon
+    {
+        /// <summary>
+        /// Displays no icons (default).
+        /// </summary>
+        None = TaskDialogStandardIcon.None,
+        /// <summary>
+        /// Displays the User Account Control shield.
+        /// </summary>
+        Shield = TaskDialogStandardIcon.Shield,
+        /// <summary>
+        /// Displays the Information icon.
+        /// </summary>
+        Information = TaskDialogStandardIcon.Information,
+        /// <summary>
+        /// Displays the error icon.
+        /// </summary>
+        Error = TaskDialogStandardIcon.Error,
+        /// <summary>
+        /// Displays the warning icon.
+        /// </summary>
+        Warning = TaskDialogStandardIcon.Warning
+    }
+
 }
