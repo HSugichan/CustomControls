@@ -39,7 +39,7 @@ namespace CustomControls
                 Caption = caption,
                 InstructionText = instructionText,
                 Text = text,
-                Icon = TaskDialogStandardIcon.Warning
+                Icon = (TaskDialogStandardIcon)icon
             })
             {
                 if (commandLinkTables.Length < 1)
