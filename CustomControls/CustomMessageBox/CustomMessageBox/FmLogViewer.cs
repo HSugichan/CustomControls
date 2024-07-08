@@ -49,6 +49,9 @@ namespace CustomControls
                 Enabled = false
             };
             _timer.Elapsed += (s, e) => RefreshLog();
+
+            Shown += (s, e) => _btnExit.Visible = TopLevel;
+
         }
         private readonly StringBuilder _stringBuilder = null;
         private string _logFileName;
