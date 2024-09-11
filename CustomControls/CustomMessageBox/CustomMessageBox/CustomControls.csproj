@@ -112,6 +112,7 @@
     <Compile Include="FolderBrowserDialog.cs" />
     <Compile Include="InputBox.cs" />
     <Compile Include="MessageBox.cs" />
+    <Compile Include="MyPathNameEditor.cs" />
     <Compile Include="PasscodeBox.cs" />
     <Compile Include="FmProgressDialog.cs">
       <SubType>Form</SubType>
